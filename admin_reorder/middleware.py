@@ -3,8 +3,10 @@ from copy import deepcopy
 from django.conf import settings
 from django.contrib import admin
 from django.core.exceptions import ImproperlyConfigured
-from django.core.urlresolvers import resolve, Resolver404
-
+try:
+    from django.core.urlresolvers import resolve, Resolver404
+except ImportError:
+    from django.urls import resolve, Resolver404
 try:
     from django.utils.deprecation import MiddlewareMixin
 except ImportError:
